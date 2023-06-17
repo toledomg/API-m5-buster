@@ -29,6 +29,13 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+
+# Libs usadas neste Projeto
+THIRD_PARTY_APPS = ["rest_framework"]
+
+# Meus Apps deste Projeto
+MY_APPS = ["users", "movies"]
+
 # Aplicações Originais Django
 DJANGO_APPS = [
     "django.contrib.admin",
@@ -39,14 +46,8 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-# Libs usadas neste Projeto
-MY_LIBS = ["rest_framework"]
-
-# Meus Apps deste Projeto
-MY_APPS = ["users"]
-
 # Junção de LIBS e Apps do Projeto + Apps Originais do Django
-INSTALLED_APPS = MY_LIBS + MY_APPS + DJANGO_APPS
+INSTALLED_APPS = THIRD_PARTY_APPS + MY_APPS + DJANGO_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -132,3 +133,8 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "users.User"
+
+REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 2,
+}
